@@ -59,6 +59,11 @@ public class WeatherGUI extends javax.swing.JFrame {
         jMenu1.add(miAdd);
 
         miRemove.setText("Remove Weather Station");
+        miRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miRemoveActionPerformed(evt);
+            }
+        });
         jMenu1.add(miRemove);
 
         jMenuBar1.add(jMenu1);
@@ -92,7 +97,19 @@ public class WeatherGUI extends javax.swing.JFrame {
     private void miAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddActionPerformed
         WeatherDlg2 dlg = new WeatherDlg2(this, true);
         dlg.setVisible(true);
+        
+        if(dlg.isIsOk()){
+            bm.add(dlg.getWs());
+        }
+        
     }//GEN-LAST:event_miAddActionPerformed
+
+    private void miRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRemoveActionPerformed
+       int[] idcs = tabWheater.getSelectedRows();
+       for(int i = idcs.length -1; i >= 0; i--){
+           bm.remove(i);
+       }
+    }//GEN-LAST:event_miRemoveActionPerformed
 
     /**
      * @param args the command line arguments

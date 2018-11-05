@@ -2,6 +2,7 @@
 package gui;
 
 import WetterStation.WetterStation;
+import javax.swing.JOptionPane;
 
 public class WeatherDlg2 extends javax.swing.JDialog {
     
@@ -101,6 +102,7 @@ public class WeatherDlg2 extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
+        try{
         isOk = true;
         
         String place = tfPlace.getText();
@@ -109,8 +111,12 @@ public class WeatherDlg2 extends javax.swing.JDialog {
         int humidity = Integer.parseInt(tfHumidity.getText());
         
         
-        ws = new WetterStation(place, seaLevel, temp, humidity);
+        ws = new WetterStation(place, seaLevel,temp,humidity);
         dispose();
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
     }//GEN-LAST:event_btOkActionPerformed
 
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed

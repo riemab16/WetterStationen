@@ -9,10 +9,11 @@ public class WetterStation implements Serializable {
     private float temp;
     private int humidity;
 
-    public WetterStation(String place, int seaLevel, float temp, int humidity) {
+    public WetterStation(String place, int seaLevel, float temp, int humidity) throws Exception{
         this.place = place;
         this.seaLevel = seaLevel;
-        
+        setTemp(temp);
+        setHum(humidity);
     }
 
     public String getPlace() {
@@ -38,7 +39,7 @@ public class WetterStation implements Serializable {
         this.temp = temp;
     }
     
-     public void setHum(float temp) throws Exception{
+     public void setHum(int humidity) throws Exception{
         if(humidity < 0 || humidity > 100){
             throw new Exception("Luftfeuchtigkeit ungültig, nur zwischen 0% und 100% akzeptabel");
         }
